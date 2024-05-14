@@ -1,4 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
+import { Check } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -19,6 +20,23 @@ export default function Home() {
               <p className='mt-8 text-lg lg:pr-10 max-w-prose text-center lg:text-left text-balance md:text-wrap'>
               Immortalize your favorite <span className='font-semibold'>designs</span> on the back of your Macbook. Macust lets you customize your device to bring your own personality to it.
               </p>
+              <ul className='mt-8 space-y-2 text-left font-medium flex flex-col items-center sm:items-start'>
+                <div className='space-y-2'>
+                  <li className='flex gap-1.5 items-center text-left'>
+                    <Check className='h-5 w-5 shrink-0 text-green-600' />
+                    High-quality, durable print
+                  </li>
+                  <li className='flex gap-1.5 items-center text-left'>
+                    <Check className='h-5 w-5 shrink-0 text-green-600' />5 year
+                    print guarantee
+                  </li>
+                  <li className='flex gap-1.5 items-center text-left'>
+                    <Check className='h-5 w-5 shrink-0 text-green-600' />
+                    Modern Macbook models supported
+                  </li>
+                </div>
+              </ul>
+
             </div>
           </div>
         </MaxWidthWrapper>
