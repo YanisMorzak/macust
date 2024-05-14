@@ -1,5 +1,5 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { Check } from "lucide-react";
+import { Check, Star } from "lucide-react";
 import Image from "next/image";
 
 export default function Home() {
@@ -64,6 +64,19 @@ export default function Home() {
                     src='/users/user-5.jpg'
                     alt='user image'
                   />
+                </div>
+                <div className='flex flex-col justify-between items-center sm:items-start'>
+                  <div className='flex gap-0.5'>
+                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
+                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
+                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
+                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
+                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
+                  </div>
+
+                  <p>
+                    <span className='font-semibold'>1.250</span> happy customers
+                  </p>
                 </div>
                 </div>
 
