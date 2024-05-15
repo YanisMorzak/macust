@@ -45,7 +45,26 @@ const Navbar = async () => {
                   <ArrowRight className='ml-1.5 h-5 w-5' />
                 </Link>
             </>
-        ): <></>}
+        ): <>
+        <Link
+            href='/api/auth/register'
+             className={buttonVariants({
+             size: 'sm',
+             variant: 'purple',
+            })}>
+            Sign up
+        </Link>
+       
+        <Link
+              href='/configure/upload'
+              className={buttonVariants({
+                size: 'sm',
+                variant: 'purple',
+              })}>
+              Create case
+              <ArrowRight className='ml-1.5 h-5 w-5' />
+            </Link>
+        </>}
         </div>
         </div>
       </MaxWidthWrapper>
