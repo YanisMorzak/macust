@@ -2,15 +2,21 @@ import Link from 'next/link'
 import MaxWidthWrapper from './MaxWidthWrapper'
 import { buttonVariants } from './ui/button'
 import { ArrowRight } from 'lucide-react'
+import { getKindeServerSession } from '@kinde-oss/kinde-auth-nextjs/server'
 
 const Navbar = async () => {
-  const user = false
-  const isAdmin = false
+
+  // obtenir les informations de session de l'utilisateur actuellement connecté
+  const { getUser } = getKindeServerSession()
+  const user = await getUser()
+
+  // vérifie si l'utilisateur connecté est un administrateur en comparant son adresse e-mail avec une adresse e-mail administrateur définie dans les variables d'environnement
+  const isAdmin = user?.email === process.env.ADMIN_EMAIL
 
   return (
-    <nav className='sticky z-[100] h-14 lg:h-16 inset-x-0 top-0 w-full border-b border-slate-600 bg-slate-800 backdrop-blur-lg transition-all text-white'>
+    <nav className='sticky z-[100] h-20 inset-x-0 top-0 w-full border-b border-slate-600 bg-slate-800 backdrop-blur-lg transition-all text-white'>
       <MaxWidthWrapper>
-        <div className='flex h-14 lg:h-16 items-center justify-between border-b border-slate-600'>
+        <div className='flex h-20 items-center justify-between border-b border-slate-600'>
           <Link href='/' className='flex z-40 font-semibold text-2xl lg:text-3xl'>
             Ma<span className='text-purple-600'>cust</span>
           </Link>
