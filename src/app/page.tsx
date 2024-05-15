@@ -1,5 +1,5 @@
-import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import TemplateMac from "@/components/TemplateMac";
+import MaxWidthWrapper from "@/src/components/MaxWidthWrapper";
+import TemplateMac from "@/src/components/TemplateMac";
 import { Check, Star } from "lucide-react";
 import Image from "next/image";
 
