@@ -16,7 +16,7 @@ const Navbar = async () => {
           </Link>
         <div className='h-full flex items-center space-x-4'>
         {user ? (
-              <>
+            <>
             <Link
                 href='/api/auth/logout'
                  className={buttonVariants({
@@ -72,7 +72,7 @@ const Navbar = async () => {
               })}>
               Create case
               <ArrowRight className='ml-1.5 h-5 w-5' />
-            </Link>
+        </Link>
         </>}
         </div>
         </div>
