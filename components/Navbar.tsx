@@ -1,10 +1,11 @@
 import Link from 'next/link'
 import MaxWidthWrapper from './MaxWidthWrapper'
 import { buttonVariants } from './ui/button'
+import { ArrowRight } from 'lucide-react'
 
 const Navbar = async () => {
   const user = true
-  const isAdmin = true
+  const isAdmin = false
 
   return (
     <nav className='sticky z-[100] h-14 lg:h-16 inset-x-0 top-0 w-full border-b border-slate-600 bg-slate-800 backdrop-blur-lg transition-all text-white'>
@@ -34,6 +35,15 @@ const Navbar = async () => {
                     Dashboard ✨
                   </Link>
             ): null}
+            <Link
+                  href='/configure/upload'
+                  className={buttonVariants({
+                    size: 'sm',
+                    variant: 'purple',
+                  })}>
+                  Create case
+                  <ArrowRight className='ml-1.5 h-5 w-5' />
+                </Link>
             </>
         ): <></>}
         </div>
