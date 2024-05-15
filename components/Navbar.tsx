@@ -4,7 +4,7 @@ import { buttonVariants } from './ui/button'
 import { ArrowRight } from 'lucide-react'
 
 const Navbar = async () => {
-  const user = true
+  const user = false
   const isAdmin = false
 
   return (
@@ -55,6 +55,15 @@ const Navbar = async () => {
             Sign up
         </Link>
        
+        <Link
+            href='/api/auth/login'
+            className={buttonVariants({
+            size: 'sm',
+            variant: 'secondary',
+            })}>
+            Login
+        </Link>
+        <div className='h-8 w-px bg-zinc-200 hidden sm:block' />
         <Link
               href='/configure/upload'
               className={buttonVariants({
