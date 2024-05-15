@@ -4,6 +4,7 @@ import { buttonVariants } from './ui/button'
 
 const Navbar = async () => {
   const user = true
+  const isAdmin = true
 
   return (
     <nav className='sticky z-[100] h-14 lg:h-16 inset-x-0 top-0 w-full border-b border-slate-600 bg-slate-800 backdrop-blur-lg transition-all text-white'>
@@ -23,6 +24,16 @@ const Navbar = async () => {
                 })}>
                 Sign out
             </Link>
+            {isAdmin ? (
+                  <Link
+                    href='/dashboard'
+                    className={buttonVariants({
+                      size: 'sm',
+                      variant: 'secondary',
+                    })}>
+                    Dashboard ✨
+                  </Link>
+            ): null}
             </>
         ): <></>}
         </div>
