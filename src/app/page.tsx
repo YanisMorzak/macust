@@ -6,7 +6,7 @@ import {  Reviews } from "../components/Reviews";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-slate-800 to-violet-800 text-white">
+    <div className="bg-gradient-to-b from-slate-800 via-violet-800 to-slate-800 text-white">
       <section>
         <MaxWidthWrapper className='pb-24 pt-10 sm:pb-32 lg:gap-x-12 lg:pt-24 xl:pt-32 lg:pb-52'>
           <div className='col-span-2 px-6 lg:px-0 lg:pt-4'>
@@ -114,6 +114,24 @@ export default function Home() {
                 </span>{' '}
                 now
               </h2>
+            </div>
+          </div>
+
+          <div className='mx-auto max-w-6xl px-6 lg:px-8'>
+            <div className='relative flex flex-col items-center md:grid grid-cols-2 gap-40'>
+              <img
+                src='/arrow.png'
+                className='absolute top-[25rem] md:top-1/2 -translate-y-1/2 z-10 left-1/2 -translate-x-1/2 rotate-90 md:rotate-0'
+              />
+
+              <div className='relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-gray-900/5 ring-inset ring-gray-900/10 lg:rounded-2xl'>
+                <img
+                  src='/steve-jobs.png'
+                  className='rounded-xl object-cover bg-white shadow-2xl ring-1 ring-gray-900/10 h-full w-full'
+                />
+              </div>
+
+              <TemplateMac className='w-full' imgSrc='/steve-jobs-mac.png' />
             </div>
           </div>
           </MaxWidthWrapper>

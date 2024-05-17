@@ -45,6 +45,7 @@ const CUSTOMS = [
     const [columnHeight, setColumnHeight] = useState(0)
     const duration = `${columnHeight * msPerPixel}ms`
   
+    // grille réagit aux changements de taille de la fenêtre du navigateur.
     useEffect(() => {
       if (!columnRef.current) return
   
@@ -79,7 +80,7 @@ const CUSTOMS = [
     imgSrc: string
   }
   
-  // l'affichage de chaque customs
+  // l'affichage de chaque customs et gestion de leur animation et de leur style
   function Review({ imgSrc, className, ...props }: ReviewProps) {
     const POSSIBLE_ANIMATION_DELAYS = [
       '0s',
