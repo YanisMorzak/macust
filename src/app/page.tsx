@@ -1,8 +1,11 @@
 import MaxWidthWrapper from "@/src/components/MaxWidthWrapper";
 import TemplateMac from "@/src/components/TemplateMac";
-import { Check, Star } from "lucide-react";
+import { ArrowRight, Check, Star } from "lucide-react";
 import CustomerReview from "../components/CustomerReview";
 import {  Reviews } from "../components/Reviews";
+import { buttonVariants } from "../components/ui/button";
+import Link from "next/link";
+import { cn } from "../lib/utils";
 
 export default function Home() {
   return (
@@ -105,7 +108,7 @@ export default function Home() {
 
        <section>
         <MaxWidthWrapper className='py-24'>
-          <div className='mb-12 px-6 lg:px-8'>
+          <div className='mb-20 px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl sm:text-center'>
               <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-white'>
                 Upload your photo and get{' '}
@@ -134,6 +137,37 @@ export default function Home() {
               <TemplateMac className='w-full' imgSrc='/steve-jobs-mac.png' />
             </div>
           </div>
+
+          <ul className='mx-auto mt-20 max-w-prose sm:text-lg space-y-2 w-fit'>
+            <li className='w-fit mx-auto'>
+              <Check className='h-5 w-5 text-purple-600 inline mr-1.5' />
+              High-quality ink
+            </li>
+            <li className='w-fit mx-auto'>
+              <Check className='h-5 w-5 text-purple-600 inline mr-1.5' />
+              Scratch and fingerprint resistant coating
+            </li>
+            <li className='w-fit mx-auto'>
+              <Check className='h-5 w-5 text-purple-600 inline mr-1.5' />
+              Wireless charging compatible
+            </li>
+            <li className='w-fit mx-auto'>
+              <Check className='h-5 w-5 text-purple-600 inline mr-1.5' />5 year
+              print warranty
+            </li>
+
+            <div className='flex justify-center'>
+            <Link
+              href='/configure/upload'
+              className={cn(buttonVariants({
+                size: 'sm',
+                variant: 'purple',
+              }), 'md:h-10 rounded-md px-8 text-md mt-8')}>
+              Create case
+              <ArrowRight className='ml-1.5 h-5 w-5' />
+        </Link>
+            </div>
+          </ul>
           </MaxWidthWrapper>
           </section>
     </div>
