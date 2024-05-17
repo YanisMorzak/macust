@@ -2,6 +2,7 @@ import MaxWidthWrapper from "@/src/components/MaxWidthWrapper";
 import TemplateMac from "@/src/components/TemplateMac";
 import { Check, Star } from "lucide-react";
 import CustomerReview from "../components/CustomerReview";
+import { Review } from "../components/Review";
 
 export default function Home() {
   return (
@@ -96,6 +97,9 @@ export default function Home() {
        {/* value proposition section */}
        <section className='grainy-dark py-24'>
        <CustomerReview />
+       <div className='pt-16'>
+          <Review />
+        </div>
        </section>
     </div>
   ); 
