@@ -2,7 +2,7 @@ import MaxWidthWrapper from "@/src/components/MaxWidthWrapper";
 import TemplateMac from "@/src/components/TemplateMac";
 import { ArrowRight, Check, Star } from "lucide-react";
 import CustomerReview from "../components/CustomerReview";
-import {  Reviews } from "../components/Reviews";
+import {  Reviews } from "../components/review-custom/Reviews";
 import { buttonVariants } from "../components/ui/button";
 import Link from "next/link";
 import { cn } from "../lib/utils";
