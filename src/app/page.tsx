@@ -1,11 +1,15 @@
 import MaxWidthWrapper from "@/src/components/MaxWidthWrapper";
 import TemplateMac from "@/src/components/TemplateMac";
-import { Check, Star } from "lucide-react";
-import Image from "next/image";
+import { ArrowRight, Check, Star } from "lucide-react";
+import CustomerReview from "../components/CustomerReview";
+import {  Reviews } from "../components/review-custom/Reviews";
+import { buttonVariants } from "../components/ui/button";
+import Link from "next/link";
+import { cn } from "../lib/utils";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-slate-800 to-violet-800 text-white">
+    <div className="bg-gradient-to-b from-slate-800 via-violet-900 to-slate-800 text-white">
       <section>
         <MaxWidthWrapper className='pb-24 pt-10 sm:pb-32 lg:gap-x-12 lg:pt-24 xl:pt-32 lg:pb-52'>
           <div className='col-span-2 px-6 lg:px-0 lg:pt-4'>
@@ -32,51 +36,17 @@ export default function Home() {
                     <Check className='h-5 w-5 shrink-0 text-green-600' />
                     Modern Macbook models supported
                   </li>
-                </div>
+                </div> 
               </ul>
-
-              <div className='mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5 mx-auto'>
-                <div className='flex -space-x-4'>
-                  <img
-                    className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-1.png'
-                    alt='user image'
-                  />
-                  <img
-                    className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-2.png'
-                    alt='user image'
-                  />
-                  <img
-                    className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-3.png'
-                    alt='user image'
-                  />
-                  <img
-                    className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-4.jpg'
-                    alt='user image'
-                  />
-                  <img
-                    className='inline-block object-cover h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-5.jpg'
-                    alt='user image'
-                  />
-                </div>
-                <div className='flex flex-col justify-between items-center sm:items-start'>
-                  <div className='flex gap-0.5'>
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                  </div>
-
-                  <p>
-                    <span className='font-semibold'>1.250</span> happy customers
-                  </p>
-                </div>
-                </div>
+              <Link
+              href='/configure/upload'
+              className={cn(buttonVariants({
+                size: 'sm',
+                variant: 'purple',
+              }), 'md:h-12 rounded-md px-8 text-md mt-8 mx-auto')}>
+              Create case
+              <ArrowRight className='ml-1.5 h-5 w-5' />
+              </Link>
 
             </div>
           </div>
@@ -92,6 +62,81 @@ export default function Home() {
           </div>
         </MaxWidthWrapper>
       </section>
+
+      <section>
+        <MaxWidthWrapper className='py-24'>
+          <div className='mb-20 px-6 lg:px-8'>
+            <div className='mx-auto max-w-2xl sm:text-center'>
+              <h2 className='order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-white'>
+                Upload your photo and get{' '}
+                <span className='relative px-2 bg-gradient-to-r from-slate-800 to-violet-600 rounded-md text-white'>
+                  your Macbook
+                </span>{' '}
+                now
+              </h2>
+            </div>
+          </div>
+
+          <div className='mx-auto max-w-6xl px-6 lg:px-8'>
+            <div className='relative flex flex-col items-center md:grid grid-cols-2 gap-40'>
+              <img
+                src='/arrow.png'
+                className='absolute top-[25rem] md:top-1/2 -translate-y-1/2 z-10 left-1/2 -translate-x-1/2 rotate-90 md:rotate-0'
+              />
+
+              <div className='relative h-80 md:h-full w-full md:justify-self-end max-w-sm rounded-xl bg-gray-900/5 ring-inset ring-gray-900/10 lg:rounded-2xl'>
+                <img
+                  src='/steve-jobs.png'
+                  className='rounded-xl object-cover bg-white shadow-2xl ring-1 ring-gray-900/10 h-full w-full'
+                />
+              </div>
+
+              <TemplateMac className='w-full' imgSrc='/steve-jobs-mac.png' />
+            </div>
+          </div>
+
+          <ul className='mx-auto mt-20 max-w-prose sm:text-lg space-y-2 w-fit'>
+
+
+            <div className='flex flex-col justify-center'>
+            <li className='w-fit'>
+              <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
+              High-quality ink
+            </li>
+            <li className='w-fit'>
+              <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
+              Scratch and fingerprint resistant coating
+            </li>
+            <li className='w-fit'>
+              <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
+              Wireless charging compatible
+            </li>
+            <li className='w-fit'>
+              <Check className='h-5 w-5 text-green-600 inline mr-1.5' />5 year
+              print warranty
+            </li>
+            <Link
+              href='/configure/upload'
+              className={cn(buttonVariants({
+                size: 'sm',
+                variant: 'purple',
+              }), 'md:h-12 rounded-md px-8 text-md mt-8')}>
+              Create case
+              <ArrowRight className='ml-1.5 h-5 w-5' />
+        </Link>
+            </div>
+          </ul>
+          </MaxWidthWrapper>
+          </section>
+
+       {/* value proposition section */}
+       <section className='grainy-dark py-24'>
+       <CustomerReview />
+       <div className='pt-16'>
+          <h2 className="pt-20 order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-white capitalize"><span className='bg-gradient-to-r from-slate-800 to-violet-600 rounded-md px-4'>Customs</span> ideas</h2>
+          <Reviews />
+        </div>
+       </section>
     </div>
   ); 
 }
