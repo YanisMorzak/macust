@@ -9,7 +9,7 @@ import { cn } from "../lib/utils";
 
 export default function Home() {
   return (
-    <div className="bg-gradient-to-b from-slate-800 via-violet-800 to-slate-800 text-white">
+    <div className="bg-gradient-to-b from-slate-800 via-violet-900 to-slate-800 text-white">
       <section>
         <MaxWidthWrapper className='pb-24 pt-10 sm:pb-32 lg:gap-x-12 lg:pt-24 xl:pt-32 lg:pb-52'>
           <div className='col-span-2 px-6 lg:px-0 lg:pt-4'>
@@ -36,51 +36,17 @@ export default function Home() {
                     <Check className='h-5 w-5 shrink-0 text-green-600' />
                     Modern Macbook models supported
                   </li>
-                </div>
+                </div> 
               </ul>
-
-              <div className='mt-12 flex flex-col sm:flex-row items-center sm:items-start gap-5 mx-auto'>
-                <div className='flex -space-x-4'>
-                  <img
-                    className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-1.png'
-                    alt='user image'
-                  />
-                  <img
-                    className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-2.png'
-                    alt='user image'
-                  />
-                  <img
-                    className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-3.png'
-                    alt='user image'
-                  />
-                  <img
-                    className='inline-block h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-4.jpg'
-                    alt='user image'
-                  />
-                  <img
-                    className='inline-block object-cover h-10 w-10 rounded-full ring-2 ring-slate-100'
-                    src='/users/user-5.jpg'
-                    alt='user image'
-                  />
-                </div>
-                <div className='flex flex-col justify-between items-center sm:items-start'>
-                  <div className='flex gap-0.5'>
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                    <Star className='h-4 w-4 text-purple-500 fill-purple-500' />
-                  </div>
-
-                  <p>
-                    <span className='font-semibold'>1.250</span> happy customers
-                  </p>
-                </div>
-                </div>
+              <Link
+              href='/configure/upload'
+              className={cn(buttonVariants({
+                size: 'sm',
+                variant: 'purple',
+              }), 'md:h-12 rounded-md px-8 text-md mt-8 mx-auto')}>
+              Create case
+              <ArrowRight className='ml-1.5 h-5 w-5' />
+              </Link>
 
             </div>
           </div>
@@ -97,16 +63,7 @@ export default function Home() {
         </MaxWidthWrapper>
       </section>
 
-       {/* value proposition section */}
-       <section className='grainy-dark py-24'>
-       <CustomerReview />
-       <div className='pt-16'>
-          <h2 className="pt-8 order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-white capitalize"><span className='bg-gradient-to-r from-slate-800 to-violet-600 rounded-md px-4'>Customs</span> ideas</h2>
-          <Reviews />
-        </div>
-       </section>
-
-       <section>
+      <section>
         <MaxWidthWrapper className='py-24'>
           <div className='mb-20 px-6 lg:px-8'>
             <div className='mx-auto max-w-2xl sm:text-center'>
@@ -139,30 +96,31 @@ export default function Home() {
           </div>
 
           <ul className='mx-auto mt-20 max-w-prose sm:text-lg space-y-2 w-fit'>
-            <li className='w-fit mx-auto'>
-              <Check className='h-5 w-5 text-purple-600 inline mr-1.5' />
+
+
+            <div className='flex flex-col justify-center'>
+            <li className='w-fit'>
+              <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
               High-quality ink
             </li>
-            <li className='w-fit mx-auto'>
-              <Check className='h-5 w-5 text-purple-600 inline mr-1.5' />
+            <li className='w-fit'>
+              <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
               Scratch and fingerprint resistant coating
             </li>
-            <li className='w-fit mx-auto'>
-              <Check className='h-5 w-5 text-purple-600 inline mr-1.5' />
+            <li className='w-fit'>
+              <Check className='h-5 w-5 text-green-600 inline mr-1.5' />
               Wireless charging compatible
             </li>
-            <li className='w-fit mx-auto'>
-              <Check className='h-5 w-5 text-purple-600 inline mr-1.5' />5 year
+            <li className='w-fit'>
+              <Check className='h-5 w-5 text-green-600 inline mr-1.5' />5 year
               print warranty
             </li>
-
-            <div className='flex justify-center'>
             <Link
               href='/configure/upload'
               className={cn(buttonVariants({
                 size: 'sm',
                 variant: 'purple',
-              }), 'md:h-10 rounded-md px-8 text-md mt-8')}>
+              }), 'md:h-12 rounded-md px-8 text-md mt-8')}>
               Create case
               <ArrowRight className='ml-1.5 h-5 w-5' />
         </Link>
@@ -170,6 +128,15 @@ export default function Home() {
           </ul>
           </MaxWidthWrapper>
           </section>
+
+       {/* value proposition section */}
+       <section className='grainy-dark py-24'>
+       <CustomerReview />
+       <div className='pt-16'>
+          <h2 className="pt-20 order-1 mt-2 tracking-tight text-center text-balance !leading-tight font-bold text-5xl md:text-6xl text-white capitalize"><span className='bg-gradient-to-r from-slate-800 to-violet-600 rounded-md px-4'>Customs</span> ideas</h2>
+          <Reviews />
+        </div>
+       </section>
     </div>
   ); 
 }
