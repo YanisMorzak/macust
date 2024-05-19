@@ -2,7 +2,7 @@
 
 import { cn } from '@/src/lib/utils'
 import { Image, Loader2, MousePointerSquareDashed } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useState, useTransition } from 'react'
 import Dropzone from 'react-dropzone'
 
 export default function UploadPage() {
@@ -10,6 +10,8 @@ export default function UploadPage() {
 
     const onDropRejected = () => {  }
     const onDropAccepted = () => {  }
+
+    const [isPending, startTransition] = useTransition()
   return (
     <div className={cn("relative h-full flex-1 my-16 w-full rounded-xl bg-gray-900/5 p-2 ring-1 ring-inset ring-gray-900/10 lg:rounded-2xl flex justify-center flex-col items-center",
     {
@@ -33,7 +35,7 @@ export default function UploadPage() {
               <input {...getInputProps()} />
               {isDragOver ? (
                 <MousePointerSquareDashed className='h-6 w-6 text-zinc-500 mb-2' />
-              ) : false ? (
+              ) : false || isPending ? (
                 <Loader2 className='animate-spin h-6 w-6 text-zinc-500 mb-2' />
               ) : (
                 <Image className='h-6 w-6 text-zinc-500 mb-2' />
