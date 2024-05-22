@@ -23,6 +23,7 @@ interface PageProps {
     return notFound()
   }
     
+  const { imageUrl, width, height } = configuration
   
     return (
       <div>{id}</div>
