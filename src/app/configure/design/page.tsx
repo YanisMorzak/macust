@@ -1,5 +1,6 @@
 import { db } from "@/src/db"
 import { notFound } from "next/navigation"
+import DesignConfigurator from "./DesignConfigurator"
 
 interface PageProps {
     searchParams: {
@@ -24,9 +25,13 @@ interface PageProps {
   }
     
   const { imageUrl, width, height } = configuration
-  
+
     return (
-      <div>{id}</div>
+        <DesignConfigurator
+        configId={configuration.id}
+        imageDimensions={{ width, height }}
+        imageUrl={imageUrl}
+      />
     )
   }
   
