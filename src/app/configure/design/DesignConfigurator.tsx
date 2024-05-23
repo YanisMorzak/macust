@@ -213,7 +213,12 @@ export default function DesignConfigurator({
                     100
                 )}
               </p>
-              
+              <Button
+                size='sm'
+                className='w-full'>
+                Continue
+                <ArrowRight className='h-4 w-4 ml-1.5 inline' />
+              </Button>
             </div>
           </div>
         </div>
