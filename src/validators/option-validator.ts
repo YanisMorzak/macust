@@ -6,18 +6,22 @@ export const MODELS = {
       {
         label: 'MacBook Air 13″',
         value: 'MacBook Air 13″',
+        price: 130000,
       },
       {
         label: 'MacBook Air 15″',
         value: 'MacBook Air 15″',
+        price: 140000,
       },
       {
         label: 'MacBook Pro 14″',
         value: 'MacBook Pro 14″',
+        price: 150000,
       },
       {
         label: 'MacBook Pro 16″',
         value: 'MacBook Pro 16″',
+        price: 160000,
       },
     ],
   } as const
