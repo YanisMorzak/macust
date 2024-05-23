@@ -36,10 +36,15 @@ export default function DesignConfigurator({
         finish: FINISHES.options[0],
       })
 
-      // Ajouter un log pour vérifier les valeurs d'options
-    console.log("Model price:", options.model.price);
-    console.log("Material price:", options.material.price);
-    console.log("Finish price:", options.finish.price);
+      const [renderedDimension, setRenderedDimension] = useState({
+        width: imageDimensions.width / 4,
+        height: imageDimensions.height / 4,
+      })
+    
+      const [renderedPosition, setRenderedPosition] = useState({
+        x: 150,
+        y: 205,
+      })
 
   return (
     <div className='relative mt-20 grid grid-cols-1 lg:grid-cols-3 mb-20 pb-20'>
@@ -62,6 +67,18 @@ export default function DesignConfigurator({
             y: 205,
             height: imageDimensions.height / 4,
             width: imageDimensions.width / 4,
+          }}
+          onResizeStop={(_, __, ref, ___, { x, y }) => {
+            setRenderedDimension({
+              height: parseInt(ref.style.height.slice(0, -2)),
+              width: parseInt(ref.style.width.slice(0, -2)),
+            })
+
+            setRenderedPosition({ x, y })
+          }}
+          onDragStop={(_, data) => {
+            const { x, y } = data
+            setRenderedPosition({ x, y })
           }}
           className='absolute z-20 border-[2px] border-primary'
           lockAspectRatio
