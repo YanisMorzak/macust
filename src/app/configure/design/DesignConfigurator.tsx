@@ -73,6 +73,14 @@ export default function DesignConfigurator({
       const actualY = renderedPosition.y - topOffset;
 
       const canvas = document.createElement("canvas");
+      canvas.width = width;
+      canvas.height = height;
+      const ctx = canvas.getContext("2d");
+
+      const userImage = new Image();
+      userImage.crossOrigin = "anonymous";
+      userImage.src = imageUrl;
+      await new Promise((resolve) => (userImage.onload = resolve));
     } catch (err) {}
   }
 
