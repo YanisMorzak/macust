@@ -7,10 +7,30 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum MacModel {
+  MacBookAir13
+  MacBookAir15
+  MacBookPro14
+  MacBookPro16
+}
+
+enum InkMaterial {
+  InkInJars
+  InkSticks
+}
+
+enum InkFinish {
+  smooth
+  textured
+}
+
 model Configuration {
-  id              String        @id @default(cuid())
+  id              String       @id @default(cuid())
   width           Int
   height          Int
   imageUrl        String
+  model           MacModel?
+  material        InkMaterial?
+  finish          InkFinish?
   croppedImageUrl String?
 }
