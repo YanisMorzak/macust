@@ -19,6 +19,7 @@ import { useRef, useState } from "react";
 import { Rnd } from "react-rnd";
 import { RadioGroup } from "@headlessui/react";
 import { BASE_PRICE } from "@/src/config/products";
+import { useUploadThing } from "@/src/lib/uploadthing";
 
 interface DesignConfiguratorProps {
   configId: string;
@@ -53,6 +54,8 @@ export default function DesignConfigurator({
 
   const macTemplateRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  const { startUpload } = useUploadThing("imageUploader");
 
   async function saveConfiguration() {
     try {
@@ -89,7 +92,30 @@ export default function DesignConfigurator({
         renderedDimension.width,
         renderedDimension.height
       );
+
+      //  Convertir le contenu du canvas en une chaîne Base64 ce qui permet de transformer l'image binaire en un format de chaîne de caractères. Ce format est utile car il peut être facilement manipulé en JavaScript, stocké dans une base de données, ou inclus dans un fichier JSON
+      const base64 = canvas.toDataURL();
+      // Extraire les données Base64. La chaîne générée par toDataURL contient un préfixe qui décrit le type de données (par exemple, data:image/png;base64,). Pour obtenir les données d'image brutes, nous devons extraire la partie après la virgule. Ces données sont celles qui seront converties en un format binaire pour créer un fichier.
+      const base64Data = base64.split(",")[1];
+
+      // Convertir les données Base64 en Blob. Un Blob (Binary Large Object) est une manière efficace de stocker des données binaires en JavaScript. En convertissant les données Base64 en Blob, nous obtenons un objet qui peut être manipulé comme un fichier, permettant ainsi de le téléverser ou de le télécharger.
+      const blob = base64ToBlob(base64Data, "image/png");
+      // Créer un fichier à partir du Blob. Créer un fichier à partir du Blob nous permet de donner un nom au fichier et de spécifier son type MIME (image/png), ce qui est nécessaire pour le téléversement. En ayant un fichier, nous pouvons utiliser les API de téléversement de fichiers en JavaScript pour envoyer l'image à un serveur ou un service de stockage.
+      const file = new File([blob], "filename.png", { type: "image/png" });
+
+      // Téléverser le fichier. Le téléversement du fichier permet de sauvegarder la configuration de l'utilisateur sur un serveur ou un service de stockage en ligne. Le configId peut être utilisé pour associer cette image à une configuration spécifique de l'utilisateur, ce qui est essentiel pour des applications où les utilisateurs peuvent avoir plusieurs configurations ou designs sauvegardés.
+      await startUpload([file], { configId });
     } catch (err) {}
+  }
+
+  function base64ToBlob(base64: string, mimeType: string) {
+    const byteCharacters = atob(base64);
+    const byteNumbers = new Array(byteCharacters.length);
+    for (let i = 0; i < byteCharacters.length; i++) {
+      byteNumbers[i] = byteCharacters.charCodeAt(i);
+    }
+    const byteArray = new Uint8Array(byteNumbers);
+    return new Blob([byteArray], { type: mimeType });
   }
 
   return (
