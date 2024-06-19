@@ -20,6 +20,7 @@ import { Rnd } from "react-rnd";
 import { RadioGroup } from "@headlessui/react";
 import { BASE_PRICE } from "@/src/config/products";
 import { useUploadThing } from "@/src/lib/uploadthing";
+import { useToast } from "@/src/components/ui/use-toast";
 
 interface DesignConfiguratorProps {
   configId: string;
@@ -32,6 +33,8 @@ export default function DesignConfigurator({
   imageUrl,
   imageDimensions,
 }: DesignConfiguratorProps) {
+  const { toast } = useToast();
+
   const [options, setOptions] = useState<{
     model: (typeof MODELS.options)[number];
     material: (typeof MATERIALS.options)[number];
@@ -105,7 +108,14 @@ export default function DesignConfigurator({
 
       // Téléverser le fichier. Le téléversement du fichier permet de sauvegarder la configuration de l'utilisateur sur un serveur ou un service de stockage en ligne. Le configId peut être utilisé pour associer cette image à une configuration spécifique de l'utilisateur, ce qui est essentiel pour des applications où les utilisateurs peuvent avoir plusieurs configurations ou designs sauvegardés.
       await startUpload([file], { configId });
-    } catch (err) {}
+    } catch (err) {
+      toast({
+        title: "Something went wrong",
+        description:
+          "There was a problem saving your config, please try again.",
+        variant: "destructive",
+      });
+    }
   }
 
   function base64ToBlob(base64: string, mimeType: string) {
