@@ -21,6 +21,9 @@ import { RadioGroup } from "@headlessui/react";
 import { BASE_PRICE } from "@/src/config/products";
 import { useUploadThing } from "@/src/lib/uploadthing";
 import { useToast } from "@/src/components/ui/use-toast";
+import { useMutation } from "@tanstack/react-query";
+import { useRouter } from "next/navigation";
+import { saveConfig as _saveConfig, SaveConfigArgs } from "./actions";
 
 interface DesignConfiguratorProps {
   configId: string;
@@ -34,6 +37,24 @@ export default function DesignConfigurator({
   imageDimensions,
 }: DesignConfiguratorProps) {
   const { toast } = useToast();
+  const router = useRouter();
+
+  const { mutate: saveConfig, isPending } = useMutation({
+    mutationKey: ["save-config"],
+    mutationFn: async (args: SaveConfigArgs) => {
+      await Promise.all([saveConfiguration(), _saveConfig(args)]);
+    },
+    onError: () => {
+      toast({
+        title: "Something went wrong",
+        description: "There was an error on our end. Please try again.",
+        variant: "destructive",
+      });
+    },
+    onSuccess: () => {
+      router.push(`/configure/preview?id=${configId}`);
+    },
+  });
 
   const [options, setOptions] = useState<{
     model: (typeof MODELS.options)[number];
@@ -327,7 +348,18 @@ export default function DesignConfigurator({
                     100
                 )}
               </p>
-              <Button size="sm" className="w-full">
+              <Button
+                onClick={() =>
+                  saveConfig({
+                    configId,
+                    finish: options.finish.value,
+                    material: options.material.value,
+                    model: options.model.value,
+                  })
+                }
+                size="sm"
+                className="w-full"
+              >
                 Continue
                 <ArrowRight className="h-4 w-4 ml-1.5 inline" />
               </Button>
