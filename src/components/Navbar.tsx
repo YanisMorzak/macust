@@ -58,7 +58,7 @@ const Navbar = async () => {
              className={cn(buttonVariants({
               size: 'sm',
               variant: 'purple',
-            }), 'md:h-10 rounded-md px-8 text-md')}>
+            }), 'md:h-8 rounded-md px-8 text-sm')}>
             Sign up
         </Link>
         <div className='h-8 w-px bg-zinc-200 hidden sm:block' />
@@ -67,7 +67,7 @@ const Navbar = async () => {
             className={cn(buttonVariants({
               size: 'sm',
               variant: 'secondary',
-            }), 'md:h-10 rounded-md px-8 text-md')}>
+            }), 'md:h-8 rounded-md px-8 text-sm')}>
             Login
         </Link>
         </>}
