@@ -1,6 +1,7 @@
 import { db } from "@/src/db";
 import { notFound } from "next/navigation";
 import React from "react";
+import DesignPreview from "./DesignPreview";
 
 interface PageProps {
   searchParams: {
@@ -22,5 +23,5 @@ export default async function page({ searchParams }: PageProps) {
   if (!configuration) {
     return notFound();
   }
-  return <div>page</div>;
+  return <DesignPreview />;
 }
