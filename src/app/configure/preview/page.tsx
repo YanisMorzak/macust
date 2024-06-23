@@ -23,5 +23,5 @@ export default async function page({ searchParams }: PageProps) {
   if (!configuration) {
     return notFound();
   }
-  return <DesignPreview />;
+  return <DesignPreview configuration={configuration} />;
 }
