@@ -1,9 +1,12 @@
 "use client";
 
 import TemplateMac from "@/src/components/TemplateMac";
+import { Button } from "@/src/components/ui/button";
+import { BASE_PRICE, PRODUCT_PRICES } from "@/src/config/products";
+import { formatPrice } from "@/src/lib/utils";
 import { MODELS } from "@/src/validators/option-validator";
 import { Configuration } from "@prisma/client";
-import { Check } from "lucide-react";
+import { ArrowRight, Check } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Confetti from "react-dom-confetti";
 
@@ -20,6 +23,14 @@ export default function DesignPreview({
   const { label: modelLabel } = MODELS.options.find(
     ({ value }) => value === model
   )!;
+
+  const modelOption = MODELS.options.find(({ value }) => value === model);
+
+  const modelPrice = modelOption ? modelOption.price : 0;
+
+  let totalPrice = BASE_PRICE + modelOption!.price;
+  if (material === "InkSticks") totalPrice += PRODUCT_PRICES.material.InkStick;
+  if (finish === "textured") totalPrice += PRODUCT_PRICES.finish.textured;
 
   return (
     <>
@@ -42,7 +53,7 @@ export default function DesignPreview({
         </div>
         <div className="mt-6 sm:col-span-9 md:row-end-1">
           <h3 className="text-3xl font-bold tracking-tight text-gray-900">
-            Your {modelLabel} Custom
+            Your {modelOption?.label} Custom
           </h3>
           <div className="mt-3 flex items-center gap-1.5 text-base">
             <Check className="h-4 w-4 text-green-500" />
@@ -65,6 +76,57 @@ export default function DesignPreview({
                 <li>High-quality, durable material</li>
                 <li>Scratch- and fingerprint resistant coating</li>
               </ol>
+            </div>
+          </div>
+
+          <div className="mt-8">
+            <div className="bg-gray-50 p-6 sm:rounded-lg sm:p-8">
+              <div className="flow-root text-sm">
+                <div className="flex items-center justify-between py-1 mt-2">
+                  <p className="text-gray-600">Base price</p>
+                  <p className="font-medium text-gray-900">
+                    {formatPrice(BASE_PRICE / 100)}
+                  </p>
+                </div>
+                {finish === "textured" ? (
+                  <div className="flex items-center justify-between py-1 mt-2">
+                    <p className="text-gray-600">Textured finish</p>
+                    <p className="font-medium text-gray-900">
+                      {formatPrice(PRODUCT_PRICES.finish.textured / 100)}
+                    </p>
+                  </div>
+                ) : null}
+
+                {material === "InkSticks" ? (
+                  <div className="flex items-center justify-between py-1 mt-2">
+                    <p className="text-gray-600">Soft polycarbonate material</p>
+                    <p className="font-medium text-gray-900">
+                      {formatPrice(PRODUCT_PRICES.material.InkStick / 100)}
+                    </p>
+                  </div>
+                ) : null}
+
+                <div className="flex items-center justify-between py-1 mt-2">
+                  <p className="text-gray-600">Your {modelLabel}</p>
+                  <p className="font-medium text-gray-900">
+                    {formatPrice(modelPrice / 100)}
+                  </p>
+                </div>
+
+                <div className="my-2 h-px bg-gray-200" />
+                <div className="flex items-center justify-between py-2">
+                  <p className="font-semibold text-gray-900">Order total</p>
+                  <p className="font-semibold text-gray-900">
+                    {formatPrice(totalPrice / 100)}
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="mt-8 flex justify-end pb-12">
+              <Button className="px-4 sm:px-6 lg:px-8">
+                Check out <ArrowRight className="h-4 w-4 ml-1.5 inline" />
+              </Button>
             </div>
           </div>
         </div>
