@@ -1,7 +1,9 @@
 "use client";
 
 import TemplateMac from "@/src/components/TemplateMac";
+import { MODELS } from "@/src/validators/option-validator";
 import { Configuration } from "@prisma/client";
+import { Check } from "lucide-react";
 import React, { useEffect, useState } from "react";
 import Confetti from "react-dom-confetti";
 
@@ -12,6 +14,13 @@ export default function DesignPreview({
 }) {
   const [showConfetti, setShowConfetti] = useState<boolean>(false);
   useEffect(() => setShowConfetti(true));
+
+  const { model, finish, material } = configuration;
+
+  const { label: modelLabel } = MODELS.options.find(
+    ({ value }) => value === model
+  )!;
+
   return (
     <>
       <div
@@ -30,6 +39,16 @@ export default function DesignPreview({
             className="max-w-[250px] md:max-w-full"
             imgSrc={configuration.croppedImageUrl!}
           />
+        </div>
+      </div>
+
+      <div className="mt-6 sm:col-span-9 md:row-end-1">
+        <h3 className="text-3xl font-bold tracking-tight text-gray-900">
+          Your {modelLabel} Custom
+        </h3>
+        <div className="mt-3 flex items-center gap-1.5 text-base">
+          <Check className="h-4 w-4 text-green-500" />
+          In stock and ready to ship
         </div>
       </div>
     </>
