@@ -28,7 +28,7 @@ const TemplateMac = ({
 
       <div className="absolute z-80 inset-0">
         <img
-          className="object-cover min-w-full h-full"
+          className="object-cover h-full"
           src={imgSrc}
           alt="overlaying macbook image"
         />
